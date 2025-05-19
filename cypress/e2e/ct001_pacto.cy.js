@@ -11,14 +11,15 @@ describe('Buscar Pacto Soluções no yahoo ', () => {
     //Submeter a busca
     cy.get('#yschsp').type('{enter}')
 
-    //Validar que a pagina de resultados foi carregada
+    //Validar se URL de resultados foi carregada
     cy.url().should('include', 'p=Pacto+solu%C3%A7%C3%B5es&fr')
     cy.screenshot('pagina-de-resultados')
 
-    //Validar que os resultados contem a palavra "Pacto Soluções" ,"Sistema para Academias e Negócios Fitness:"
+    //Validar que os resultados contenham as informações esperadas: "Pacto Soluções" ,"Sistema para Academias e Negócios Fitness:"
 
     cy.get('#web > .reg > .first > .dd > .compTitle > .title > .fz-20')
       .should('contain', 'Sistema para Academias e Negócios Fitness:')
+      
     cy.get(':nth-child(2) > .dd > .compText > .fz-14 > .fc-falcon > b')
       .should('contain', 'Pacto Soluções')
 
